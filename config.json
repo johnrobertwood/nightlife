@@ -1,0 +1,20 @@
+{
+  "server": {
+    "protocol": "http",
+    "host": "local.host:8000"
+  },
+  "facebook": {
+    "key": "1188445807878136",
+    "secret": "0ba2f21cf6d47e50e7606ebb071b6893",
+    "callback": "/handle_facebook_callback",
+    "scope": [
+      "user_groups",
+      "user_likes"
+    ]
+  },
+  "twitter": {
+    "key": "vO6Px58hupalbTb4GkF9WeAnO",
+    "secret": "nqMaGaj9ml62NO2IflXLky2R73HYSzbEkQNc0PGLSixtiy2KKc",
+    "callback": "/handle_twitter_callback"
+  }
+}
