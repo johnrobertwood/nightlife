@@ -27,14 +27,21 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	console.log('db open');
 })
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.resolve(__dirname, 'js')));
 
-app.use(session({secret: 'grant'}));
+app.use(session({secret: 'very secret',resave: false,
+  saveUninitialized: true,}));
 app.use(grant);
 app.use(logger('dev'));
 
+app.get('/handle_facebook_callback', function (req, res) {
+  console.log('facebook callback')
+  res.end(JSON.stringify(req.query, null, 2))
+})
+
 app.get('/handle_twitter_callback', function (req, res) {
+	console.log('twitter callback')
   var userId = req.query.raw.user_id;
   var user = new User({ 
   	user_id: req.query.raw.user_id,
@@ -44,7 +51,8 @@ app.get('/handle_twitter_callback', function (req, res) {
 
 	//If the user is not in db save their info
 	User.findOne({user_id: userId}, function(err, user1) {
-		if (err) return console.error(err);
+
+		if (err) return console.error(err, yoyoyoy);
 		console.log(user1);
 		if (!user1) {
 		  user.save(function (err, user) {
@@ -52,14 +60,14 @@ app.get('/handle_twitter_callback', function (req, res) {
 		  });
 		}
 	});
-  // res.end(JSON.stringify(req.query, null, 2))
+  res.end(JSON.stringify(req.query, null, 2))
 });
 
 app.get('*', function(req, res) {
   console.log(req.connection.remoteAddress);
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
-app.listen(8080, function() {
-	console.log("Server on port 8080");
+app.listen(8000, function() {
+	console.log("Server on port 8000");
 });

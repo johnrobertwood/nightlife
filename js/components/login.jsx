@@ -7,17 +7,17 @@ var $ = require('jquery');
 var Login = React.createClass({
 
 	handleClick: function() {
-		$.get('http://local.host:8080/connect/twitter');
+		console.log('handle click')
+		// browserHistory.push('/connect/twitter')
+		$.get('http://local.host:8000/connect/facebook')
 	},
 
 	render: function() {
 		console.log('login component')
 		return (
 			<div>
-			<h1>Login</h1>
-	    <ul>
-	      <li onClick={this.handleClick}>Sign In</li>
-	    </ul>
+			<h1>Login!</h1>
+      <button onClick={this.handleClick}>Sign In</button>
 			</div>
 		)
 	}
