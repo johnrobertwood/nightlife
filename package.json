@@ -1,0 +1,21 @@
+{
+  "name": "yang-nighlife",
+  "version": "1.0.0",
+  "description": "A nighlife app with Angular and Yelp API",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "logger": "0.0.1",
+    "mongoose": "^4.7.6",
+    "path": "^0.12.7",
+    "yelp": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "John Wood <woodjohn185@gmail.com>",
+  "license": "ISC"
+}

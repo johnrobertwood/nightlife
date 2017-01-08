@@ -54,7 +54,8 @@ app.post('/search', function(req, res) {
   .then(function(json) {
     var pubs = json.businesses.map(function(pub) {
       return Object.assign({}, pub, {
-        count: 0
+        count: 0,
+        rsvps: []
       })
     })
 
@@ -88,9 +89,14 @@ app.post('/addvote', function (req, res) {
     if (err) return console.error(err);
     for (var i = 0; i < bar1.places.length; i++) {
       if (bar1.places[i].name === req.body.name) {
-        bar1.places[i].count += 1
-        barCount = bar1.places[i].count
-      }
+        var list = bar1.places[i].rsvps
+        if (!list.some(function(l) { return l === req.body.user})) {
+          bar1.places[i].rsvps.push(req.body.user)
+        } else {
+          bar1.places[i].rsvps = bar1.places[i].rsvps.filter(function(r) {
+            return r !== req.body.user
+          })
+        } }
     }
     Bar.update({city: location}, { $set: { places: bar1.places}}, function() {
       res.json(bar1);

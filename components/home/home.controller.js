@@ -18,7 +18,7 @@
       if (location.city) {
         $http.post('/search', location)
         .then(function(res) {
-          $scope.contactlist = res.data
+          $scope.barlist = res.data
           sessionStorage.setItem('city', res.data.city)
         });
       }
@@ -27,23 +27,22 @@
     refresh()
 
     $scope.findBars = function() {
-      console.log($scope.contactlist)
-    	$http.post('/search', $scope.contactlist)
+      console.log($scope.barlist)
+    	$http.post('/search', $scope.barlist)
     	.then(function(res) {
-    		$scope.contactlist = res.data
+    		$scope.barlist = res.data
         sessionStorage.setItem('city', res.data.city)
     	});
-
     };
 
     $scope.addVote = function(name, loc) {
       var obj = {}
       obj.name = name;
       obj.loc = loc;
+      obj.user = sessionStorage.getItem('id_token')
       $http.post('/addvote/', obj)
       .then(function(res) {
-        sessionStorage.setItem()
-        $scope.contactlist = res.data
+        $scope.barlist = res.data
       });
     }
   }

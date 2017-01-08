@@ -19,7 +19,7 @@
     // Logging out just requires removing the user's
     // id_token and profile
     function logout() {
-      localStorage.removeItem('id_token');
+      sessionStorage.removeItem('id_token');
       authManager.unauthenticate();
     }
 
@@ -27,7 +27,8 @@
     // This method is called from app.run.js
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
-        localStorage.setItem('id_token', authResult.idToken);
+        console.log(authResult)
+        sessionStorage.setItem('id_token', authResult.idToken);
         authManager.authenticate();
       });
     }
