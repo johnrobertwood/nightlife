@@ -19,9 +19,8 @@
       });
 
     lockProvider.init({
-      clientID: AUTH0_CLIENT_ID,
-      domain: AUTH0_DOMAIN,
-      callbackUrl: AUTH0_CALLBACK_URL
+      clientID: 'GSrLwrxlNLPNAuwGIfp1rSW65OTnL7aR',
+      domain: 'woodjohn.auth0.com'
     });
 
     $urlRouterProvider.otherwise('/home');

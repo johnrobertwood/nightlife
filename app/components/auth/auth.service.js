@@ -10,9 +10,8 @@
 
   function authService(lock, authManager) {
 
-    var name, city;
-
-    function login() {
+    function login(bar) {
+      sessionStorage.setItem('bar', bar)
       lock.show();
     }
 
@@ -27,8 +26,7 @@
     // This method is called from app.run.js
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
-        console.log(authResult)
-        sessionStorage.setItem('id_token', authResult.idToken);
+        sessionStorage.setItem('id_token', authResult.idTokenPayload.sub);
         authManager.authenticate();
       });
     }

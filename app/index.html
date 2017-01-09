@@ -7,21 +7,16 @@
 
     <!-- Basic style -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-      <style>
-      .navbar{
-        margin-bottom: 0;
-        border-radius: 0;
-      }
-    </style>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
     <div ng-app="app">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="home">Nightlife</a>
+            <a class="navbar-brand" ui-sref="home">Nightlife Planner</a>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
+          <div id="navbar" class="navbar">
             <ul class="nav navbar-nav">
               <li ng-if="!isAuthenticated"><a ui-sref="home" ng-click="authService.login()">Log In</a></li>
               <li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
@@ -31,9 +26,15 @@
       </nav>
 
       <div ui-view></div>
+
+      <footer class="footer">
+        <div class="container-fluid footer-text">
+          <p class="text-muted"><a class="nounderline" href="https://github.com/johnrobertwood"><span>By John Wood </span><img class="github" src="img/github.png"></a></p>
+          <p class="text-muted"><a class="nounderline" href="https://yelp.com"><span>Powered with </span><img class="yelp" src="img/yelp-icon.png"></a></p>
+        </div>
+      </footer>
     </div>
 
-    <script type="text/javascript" src="auth0-variables.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="bower_components/auth0-lock/build/lock.js"></script>

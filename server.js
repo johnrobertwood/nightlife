@@ -31,7 +31,7 @@ var Bar = mongoose.model('Bar', barSchema)
 mongoose.connect('mongodb://'+
                   process.env.USER+':'+
                   process.env.MONGO_PW+
-                  '@ds019033.mlab.com:19033/nodeauth')
+                  '@ds161028.mlab.com:61028/nightlife')
 
 var db = mongoose.connection;
 
@@ -40,7 +40,7 @@ db.once('open', function() {
   console.log('db open')
 })
 app.use(logger('dev'))
-app.use(express.static(__dirname))
+app.use(express.static(__dirname + '/app'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -96,7 +96,8 @@ app.post('/addvote', function (req, res) {
           bar1.places[i].rsvps = bar1.places[i].rsvps.filter(function(r) {
             return r !== req.body.user
           })
-        } }
+        } 
+      }
     }
     Bar.update({city: location}, { $set: { places: bar1.places}}, function() {
       res.json(bar1);

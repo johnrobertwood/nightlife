@@ -13,21 +13,7 @@
     var vm = this;
     vm.authService = authService;
 
-    var refresh = function() {
-      var location = {city: sessionStorage.getItem('city')};
-      if (location.city) {
-        $http.post('/search', location)
-        .then(function(res) {
-          $scope.barlist = res.data
-          sessionStorage.setItem('city', res.data.city)
-        });
-      }
-    }
-
-    refresh()
-
     $scope.findBars = function() {
-      console.log($scope.barlist)
     	$http.post('/search', $scope.barlist)
     	.then(function(res) {
     		$scope.barlist = res.data
@@ -35,7 +21,7 @@
     	});
     };
 
-    $scope.addVote = function(name, loc) {
+    $scope.addVote = function(name, loc, user) {
       var obj = {}
       obj.name = name;
       obj.loc = loc;
@@ -45,6 +31,25 @@
         $scope.barlist = res.data
       });
     }
+
+    var refresh = function() {
+      var location = {city: sessionStorage.getItem('city')};
+      var bar = {name: sessionStorage.getItem('bar')}
+      if (location.city) {
+        $http.post('/search', location)
+        .then(function(res) {
+          $scope.barlist = res.data
+          sessionStorage.setItem('city', res.data.city)
+        });
+      }
+      if (bar.name) {
+        console.log(sessionStorage.getItem('bar'))
+        $scope.addVote(bar.name, location.city)
+        sessionStorage.removeItem('bar')
+      }
+    }
+
+    refresh()
   }
 
 }());
