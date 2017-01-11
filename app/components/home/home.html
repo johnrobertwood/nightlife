@@ -1,15 +1,17 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class='col-sm-4 input'>
-			<input class="form-control" ng-model="barlist.city">
-			<button id="find" class="btn btn-primary add" ng-click="findBars()">Find Bars</button>
+		<div class='col-sm-4'>
+		  <form class="input" ng-submit="findBars()">
+				<input class="form-control" ng-model="barlist.city">
+				<button id="find" class="btn btn-primary add" ng-click="findBars()">Find Bars</button>
+			</form>
 		</div>
 	</div>
 	<div class="row bar-item" ng-repeat="bar in barlist.places">
 		<div class="col-sm-2 bar-pic">
 		  <a class="nounderline" ng-href="{{bar.url}}"><img ng-src="{{bar.image_url}}"></a>
 		</div>
-		<div class="col-sm-4 bar-info">
+		<div class="col-sm-6 bar-info">
 			<ul>
 				<li>
 				  <div class="name-row">

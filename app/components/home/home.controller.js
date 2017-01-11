@@ -43,7 +43,6 @@
         });
       }
       if (bar.name) {
-        console.log(sessionStorage.getItem('bar'))
         $scope.addVote(bar.name, location.city)
         sessionStorage.removeItem('bar')
       }
