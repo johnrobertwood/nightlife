@@ -1,9 +1,14 @@
 <div class="container-fluid">
+  <div class="row">
+  	<div class='col-sm-5'>
+		  <h1>Find Bars Nearby and RSVP</h1>
+	  </div>
+  </div>
 	<div class="row">
 		<div class='col-sm-4'>
 		  <form class="input" ng-submit="findBars()">
-				<input class="form-control" ng-model="barlist.city">
-				<button id="find" class="btn btn-primary add" ng-click="findBars()">Find Bars</button>
+				<input class="form-control" placeholder="Enter City or ZIP" ng-model="barlist.city">
+				<button class="btn btn-primary add" ng-click="findBars()">Find Bars</button>
 			</form>
 		</div>
 	</div>

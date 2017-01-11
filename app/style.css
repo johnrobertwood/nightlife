@@ -5,6 +5,11 @@ html {
 
 body {
     margin-bottom: 60px;
+	  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+	font-size: 2em;
 }
 
 .footer {
