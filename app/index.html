@@ -14,11 +14,9 @@
     <div ng-app="app">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="home">Nightlife Planner</a>
-          </div>
           <div id="navbar" class="navbar">
             <ul class="nav navbar-nav">
+              <li><a class="title" ui-sref="home">Nightlife Planner</a></li>
               <li ng-if="!isAuthenticated"><a ui-sref="home" ng-click="authService.login()">Log In</a></li>
               <li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
             </ul>

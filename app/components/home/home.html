@@ -1,10 +1,8 @@
 <div class="container-fluid">
-  <div class="row">
-  	<div class='col-sm-5'>
-		  <h1>Find Bars Nearby and RSVP</h1>
-	  </div>
+  <div class="content">
+	  <h2>Find Bars Nearby and RSVP</h2>
   </div>
-	<div class="row">
+	<div class="row content">
 		<div class='col-sm-4'>
 		  <form class="input" ng-submit="findBars()">
 				<input class="form-control" placeholder="Enter City or ZIP" ng-model="barlist.city">
@@ -12,23 +10,30 @@
 			</form>
 		</div>
 	</div>
-	<div class="row bar-item" ng-repeat="bar in barlist.places">
-		<div class="col-sm-2 bar-pic">
-		  <a class="nounderline" ng-href="{{bar.url}}"><img ng-src="{{bar.image_url}}"></a>
-		</div>
-		<div class="col-sm-6 bar-info">
-			<ul>
-				<li>
-				  <div class="name-row">
-			  	  <p><a class="nounderline barname" ng-href="{{bar.url}}">{{bar.name}}</a></p>
-			  	  <div class="button-icon">
-			  	  <p><button class="btn btn-primary vote" ng-show="!isAuthenticated" ng-click="authService.login(bar.name)">{{bar.rsvps.length}} Going</button></p>
-			  	  <p><button class="btn btn-primary vote" ng-show="isAuthenticated" ng-click="addVote(bar.name, barlist.city)">{{bar.rsvps.length}} Going</button></p>
+	<div class="row content">
+		<div ng-repeat="bar in barlist.places">
+		  <div class="item">
+				<div>
+					<div class="bar-item">
+						<div>
+						  <a class="nounderline" ng-href="{{bar.url}}"><img class="bar-pic" ng-src="{{bar.image_url}}"></a>
+						</div>
+					  <div class="name-row">
+				  	  <p><a class="nounderline barname" ng-href="{{bar.url}}">{{bar.name}}</a></p>
 			  	  </div>
-		  	  </div>
-			  </li>
-				<li><a class="nounderline snippet" ng-href="{{bar.url}}">{{bar.snippet_text}}</a></li>
-			</ul>
-		</div>
+					  <div>
+						  <p><button class="btn btn-primary vote" ng-show="!isAuthenticated" ng-click="authService.login(bar.name)">{{bar.rsvps.length}} Going</button></p>
+						  <p><button class="btn btn-primary vote" ng-show="isAuthenticated" ng-click="addVote(bar.name, barlist.city)">{{bar.rsvps.length}} Going</button></p>
+					  </div>
+					  <div class="bar-address" ng-repeat="address in bar.location.display_address">
+					  	<a class="nounderline" ng-href="{{bar.url}}">{{address}}</a>
+				  	</div>
+						<div class="snippet">
+							<a class="nounderline" ng-href="{{bar.url}}">{{bar.snippet_text}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</div>
 </div>

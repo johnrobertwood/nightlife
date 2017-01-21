@@ -1,0 +1,4 @@
+circle pictures
+bar name title font
+grid boxes
+background color

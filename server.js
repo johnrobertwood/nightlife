@@ -50,7 +50,7 @@ app.post('/search', function(req, res) {
   }).join('')
 
 
-  yelp.search({ term: 'bars', location: location, limit: 10 })
+  yelp.search({ term: 'bars', location: location, limit: 12 })
   .then(function(json) {
     var pubs = json.businesses.map(function(pub) {
       return Object.assign({}, pub, {
