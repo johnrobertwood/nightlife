@@ -75,10 +75,10 @@ app.post('/search', function(req, res) {
         res.json(bar1)
       }
     });
+  }, function(error) {
+    console.log('***************', error)
+    res.json(error)
   })
-  .catch(function (err) {
-    console.error(err);
-  });
 });
 
 app.post('/addvote', function (req, res) {

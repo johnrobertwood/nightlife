@@ -4,14 +4,20 @@
   </div>
 	<div class="row content">
 		<div class='col-sm-4'>
-		  <form class="input" ng-submit="findBars()">
-				<input class="form-control" placeholder="Enter City or ZIP" ng-model="barlist.city">
-				<button class="btn btn-primary add" ng-click="findBars()">Find Bars</button>
+		  <form class="input" ng-submit="findBars(); fetching()">
+				<input class="form-control" placeholder="Enter City or ZIP" ng-model="barlist.city" required>
+				<button class="btn btn-primary add">Find Bars</button>
 			</form>
 		</div>
 	</div>
+	<div class="fetching" ng-show="isFetching">
+	  <p>Searching...</p>
+  </div>
+	<div class="status" ng-show="badLocation">
+	  <p>Sorry we couldn't find any bars in <em>{{errorBar}}</em></p>
+	</div>
 	<div class="row content">
-		<div ng-repeat="bar in barlist.places">
+		<div class="big" ng-repeat="bar in barlist.places">
 		  <div class="item">
 				<div>
 					<div class="bar-item">

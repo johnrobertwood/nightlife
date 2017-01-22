@@ -32,10 +32,17 @@ h2 {
     align-items: center;
 }
 
+.status, .fetching {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+
 .barname {
 	color: #000;
-	font-size: 1.5em;
-	font-weight: bold;
+	font-size: 1.8em;
+  font-family: 'Maven Pro', sans-serif;
+  font-weight: 700;
 }
 
 .nounderline {
@@ -71,7 +78,7 @@ a.nounderline {
 }
 
 h2 {
-	font-size: 20px;
+	font-size: 1.8em;
 }
 
 ul {
@@ -89,8 +96,13 @@ ul {
 	padding: 3px 6px;
 }
 
+.big {
+  padding: 2em;
+}
+
 .snippet {
   text-align: center;
+  margin-top: 1em;
 }
 
 .content {
@@ -103,18 +115,18 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: .5em;
 }
 
 .item {
-  height: 340px;
+  height: 440px;
   width: 440px;
   background-color: #fff;
-  margin: 1.5em;
+  padding: 1em 1.5em;
 }
 
 .bar-pic {
-  margin-top: 1em;
+  margin-top: .7em;
+  margin-bottom: .7em;
   border-radius: 50%;
 }
 
