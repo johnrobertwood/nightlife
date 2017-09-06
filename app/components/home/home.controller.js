@@ -53,12 +53,20 @@
       var location = {city: sessionStorage.getItem('city')};
       var bar = {name: sessionStorage.getItem('bar')}
       if (location.city !== "undefined" && location.city) {
-        $scope.barlist = location
+        $scope.barlist = location;
         $http.post('/search', location)
         .then(function(res) {
           sessionStorage.setItem('city', res.data.city)
           $scope.barlist = res.data;
           $scope.findBars()
+        });
+      } else {
+        $scope.barlist = {city: "Palo Alto"}
+        $http.post('/search', {city: "Palo Alto"})
+        .then(function(res) {
+          sessionStorage.setItem('city', res.data.city)
+          $scope.barlist = res.data;
+          $scope.findBars();
         });
       }
       if (bar.name && $scope.isAuthenticated) {
